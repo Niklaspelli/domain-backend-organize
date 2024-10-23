@@ -22,7 +22,7 @@ await pool.query(`START TRANSACTION`);
 };
 
 const getUserBoards = async (req, res) => {
-const userId = req,user.userId;
+const userId = req.user.userId;
 	try{
 const [boards] = await pool.query(
 `SELECT b.id, b.name, b.description, b.created_at, b.created_by, bm.role FROM board_members bm JOIN boards b ON bm.board_id = b.id WHERE bm.user_id = ?`,
